@@ -162,7 +162,9 @@ function createInvoice(outputPath, details) {
         // 合計額と消費税
         yPosition -= 20;
         const totalAmount = details.itemQuantity * details.itemUnitPrice;
-        const totalTax = totalAmount * (details.isReducedTaxRate ? 0.08 : 0.1);
+        const taxRate = details.isReducedTaxRate ? 0.08 : 0.1;
+        const totalTax = totalAmount * taxRate;
+        const taxRatePercentage = details.isReducedTaxRate ? "8%" : "10%";
         page.drawText(`合計金額: ¥${totalAmount}`, {
             x: 50,
             y: yPosition,
@@ -171,7 +173,7 @@ function createInvoice(outputPath, details) {
             color: (0, pdf_lib_1.rgb)(0, 0, 0),
         });
         yPosition -= 20;
-        page.drawText(`消費税: ¥${totalTax.toFixed(2)}`, {
+        page.drawText(`消費税: ¥${totalTax.toFixed(2)} （${taxRatePercentage}）`, {
             x: 50,
             y: yPosition,
             size: smallFontSize,
