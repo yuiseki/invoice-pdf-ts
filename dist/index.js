@@ -17,7 +17,7 @@ const fontkit_1 = __importDefault(require("@pdf-lib/fontkit"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 // フォントファイルの読み込み
-const fontBytes = fs_1.default.readFileSync(path_1.default.resolve(__dirname, "font/ipaexm.ttf"));
+const fontBytes = fs_1.default.readFileSync(path_1.default.resolve(__dirname, "fonts/ipaexm.ttf"));
 function createInvoice(outputPath, details) {
     return __awaiter(this, void 0, void 0, function* () {
         // 新しいPDFドキュメントを作成
@@ -204,7 +204,7 @@ function createInvoice(outputPath, details) {
 // 引数の処理
 const args = process.argv.slice(2);
 if (args.length < 10 || args.length > 11) {
-    console.error("Usage: ts-node src/index.ts <outputPath> <issuerName> <issuerRegistrationNumber> <date> <invoiceNumber> <billingTo> <itemDescription> <itemQuantity> <itemUnitPrice> <isReducedTaxRate> [remarks]");
+    console.error("Usage: invoice-pdf <outputPath> <issuerName> <issuerRegistrationNumber> <date> <invoiceNumber> <billingTo> <itemDescription> <itemQuantity> <itemUnitPrice> <isReducedTaxRate> [remarks]");
     console.error(`Received ${args.length} arguments: ${args.join(", ")}`);
     process.exit(1);
 }

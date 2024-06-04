@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 // フォントファイルの読み込み
-const fontBytes = fs.readFileSync(path.resolve(__dirname, "font/ipaexm.ttf"));
+const fontBytes = fs.readFileSync(path.resolve(__dirname, "fonts/ipaexm.ttf"));
 
 interface InvoiceDetails {
   issuerName: string;
@@ -227,7 +227,7 @@ async function createInvoice(outputPath: string, details: InvoiceDetails) {
 const args = process.argv.slice(2);
 if (args.length < 10 || args.length > 11) {
   console.error(
-    "Usage: ts-node src/index.ts <outputPath> <issuerName> <issuerRegistrationNumber> <date> <invoiceNumber> <billingTo> <itemDescription> <itemQuantity> <itemUnitPrice> <isReducedTaxRate> [remarks]"
+    "Usage: invoice-pdf <outputPath> <issuerName> <issuerRegistrationNumber> <date> <invoiceNumber> <billingTo> <itemDescription> <itemQuantity> <itemUnitPrice> <isReducedTaxRate> [remarks]"
   );
   console.error(`Received ${args.length} arguments: ${args.join(", ")}`);
   process.exit(1);

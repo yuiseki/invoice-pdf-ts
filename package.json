@@ -2,6 +2,9 @@
   "name": "@yuiseki/invoice-pdf",
   "version": "0.0.1",
   "description": "A command line tool to generate invoice PDFs",
+  "bin": {
+    "invoice-pdf": "./bin/invoice-pdf.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts"
